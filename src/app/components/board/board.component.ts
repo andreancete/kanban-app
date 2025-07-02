@@ -139,33 +139,27 @@ import { KanbanService } from '../../services/kanban.service';
             >
               <div *ngIf="editingCard?.id !== card.id" class="card-content">
                 <div class="card-title">{{ card.title }}</div>
-                <div class="card-description" *ngIf="card.description && card.description.trim()">
+                <div
+                  class="card-description"
+                  *ngIf="card.description && card.description.trim()"
+                >
                   {{ card.description }}
                 </div>
-                <div class="card-footer">
+                <div class="card-actions">
                   <button
-                    class="btn btn-primary-action"
-                    (click)="openCard(card)"
-                    title="Visualizar card"
+                    class="btn btn-outline"
+                    (click)="startEditCard(card)"
+                    title="Editar card"
                   >
-                    Visualizar
+                    ✏️
                   </button>
-                  <div class="card-actions">
-                    <button
-                      class="btn btn-outline"
-                      (click)="startEditCard(card)"
-                      title="Editar card"
-                    >
-                      ✏️
-                    </button>
-                    <button
-                      class="btn btn-danger"
-                      (click)="deleteCard(card)"
-                      title="Excluir card"
-                    >
-                      🗑️
-                    </button>
-                  </div>
+                  <button
+                    class="btn btn-danger"
+                    (click)="deleteCard(card)"
+                    title="Excluir card"
+                  >
+                    🗑️
+                  </button>
                 </div>
               </div>
 
@@ -347,12 +341,6 @@ export class BoardComponent implements OnInit {
     this.addingCardToColumn = column;
     this.newCardTitle = '';
     this.newCardDescription = '';
-  }
-
-  openCard(card: Card): void {
-    // Abrir modal ou página de detalhes do card (por enquanto apenas log)
-    console.log('Abrindo card:', card);
-    // Futura implementação: abrir modal com detalhes do card
   }
 
   createCard(): void {
