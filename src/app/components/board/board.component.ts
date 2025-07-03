@@ -438,7 +438,7 @@ export class BoardComponent implements OnInit {
         })
         .subscribe({
           next: () => {
-            // Card reordered successfully
+            this.loadBoard(); // Sempre recarrega após sucesso
           },
           error: (error) => {
             console.error('Erro ao reordenar card:', error);
@@ -474,7 +474,7 @@ export class BoardComponent implements OnInit {
         })
         .subscribe({
           next: () => {
-            // Card moved successfully
+            this.loadBoard(); // Sempre recarrega após sucesso
           },
           error: (error) => {
             console.error('Erro ao mover card:', error);
