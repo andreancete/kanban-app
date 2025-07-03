@@ -50,7 +50,7 @@ import { KanbanService } from '../../services/kanban.service';
         >
           <div class="board-header">
             <h3>{{ board?.name || 'Board sem nome' }}</h3>
-            <div class="board-actions">
+            <div class="board-actions" *ngIf="editingBoard?.id !== board.id">
               <button class="btn btn-sm btn-outline" (click)="startEdit(board)">
                 ✏️
               </button>
@@ -80,13 +80,22 @@ import { KanbanService } from '../../services/kanban.service';
             </div>
           </div>
 
-          <div class="board-footer">
-            <span class="column-count">
-              {{ board.columns?.length || 0 }} colunas
-            </span>
-            <a [routerLink]="['/board', board.id]" class="btn btn-primary">
-              Abrir Quadro
-            </a>
+          <div class="board-content" *ngIf="editingBoard?.id !== board.id">
+            <p class="board-description">
+              Controle suas tarefas, projetos e atividades de forma simples e
+              eficiente.
+            </p>
+            <div class="board-footer">
+              <span class="column-count">
+                {{ board.columns?.length || 0 }} colunas
+              </span>
+              <a
+                [routerLink]="['/board', board.id]"
+                class="btn btn-primary-action"
+              >
+                Acessar
+              </a>
+            </div>
           </div>
         </div>
       </div>
